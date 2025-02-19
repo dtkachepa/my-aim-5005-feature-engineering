@@ -75,7 +75,7 @@ class LabelEncoder:
     def __init__(self):
         self.classes_ = None
 
-    def fit(self, x:List[str]) -> None:
+    def fit(self, x) -> None:
         self.classes_ = np.unique(x)
 
     def _check_is_array(self, x) -> np.ndarray:
@@ -88,7 +88,7 @@ class LabelEncoder:
         assert isinstance(x, np.ndarray), "Expected the input to be an iterable"
         return x
 
-    def transform(self, x:List[str]) -> np.ndarray:
+    def transform(self, x) -> np.ndarray:
         """
         Transform classes in x to labels of integers
         """
@@ -101,6 +101,6 @@ class LabelEncoder:
                 raise ValueError(f"x contains previously unseen labels: {i[0]}")
         return np.array(result)
             
-    def fit_transform(self, x:List[str]) -> np.ndarray:
+    def fit_transform(self, x) -> np.ndarray:
         self.fit(x)
         return self.transform(x)
